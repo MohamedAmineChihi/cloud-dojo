@@ -1,17 +1,11 @@
-
 FROM python:3.9-alpine
 
+WORKDIR /app
 
-WORKDIR /code
+COPY /app/main.py /app/main.py
 
+RUN pip install fastapi uvicorn
 
-COPY ./requirements.txt /code/requirements.txt
+EXPOSE 8000
 
-
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-
-
-COPY ./app /code/app
-
-
-CMD ["fastapi", "run", "app/main.py", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
