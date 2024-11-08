@@ -20,5 +20,5 @@ jobs:
         docker build . t -mohamedaminechihi/fastapi-app:latest
     - name: publish
       run: |
-        docker login -u mohamedaminechihi -p ${{ secrets.GITHUB_TOKEN }}
+        docker login -u mohamedaminechihi -p ${{ secrets.DOCKER_HUB_TOKEN }}
         docker push mohamedaminechihi/fastapi-app:latest
